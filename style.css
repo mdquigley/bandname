@@ -1,0 +1,20 @@
+body {
+    background-color: white;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    grid-auto-rows: minmax(100px, auto);
+    font-family: sans-serif;
+}
+
+#title {
+    grid-column: 1 / 4;
+    grid-row: 1;
+    text-align: center;
+}
+
+#description {
+    grid-column: 1 / 4;
+    grid-row: 2;
+    text-align: center;
+}
