@@ -45,11 +45,7 @@
                 const myRequest = new Request(url);
                 fetch(myRequest).then(function (response) {
 
-                    if (response.url.includes(signupURL)) {
-                        avail.innerText = 'https://' + bandname + '.bandcamp.com is available!';
-                    } else {
-                        avail.innerText = 'https://' + bandname + '.bandcamp.com is not available.';
-                    }
+                    avail.innerText = 'https://' + bandname + '.bandcamp.com is ' + (response.url.includes(signupURL) ? 'available!' : 'not available.');
 
                 })
             } else {
