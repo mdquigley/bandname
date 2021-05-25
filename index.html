@@ -6,12 +6,65 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bandname</title>
+
+
+
 </head>
 
 <body>
     <h1>Bandname</h1>
-    <p>Get help choosing your band name: check to see if *~MY BAND NAME~* is already taken as a subdomin of bandcamp.com
-    </p>
+    <p>Check to see if your ideal Bandcamp URL is available before settling on that sick new band name.</p>
+    <label for="input">Enter band name:</label>
+    <input id="input" name="input" type="text" required placeholder="bandnamewithnospaces">
+    <button id="submit">Look Up</button>
+
+    <h3 id="avail"></h3>
+
+    <script>
+
+        const submit = document.getElementById('submit');
+        const input = document.getElementById('input');
+        const response = document.getElementById('response');
+
+        const signupURL = "https://bandcamp.com/signup?new_domain=";
+
+        const regex = /^[a-z0-9]+$/i;
+
+        function validateInput(text) {
+            return text.match(regex);
+        }
+
+
+        submit.onclick = function lookUp() {
+
+            if (validateInput(input.value)) {
+
+                const bandname = input.value;
+                const url = 'https://' + bandname + '.bandcamp.com';
+
+                const myRequest = new Request(url);
+                fetch(myRequest).then(function (response) {
+
+                    if (response.url.includes(signupURL)) {
+                        avail.innerText = 'https://' + bandname + '.bandcamp.com is available!';
+                    } else {
+                        avail.innerText = 'https://' + bandname + '.bandcamp.com is not available.';
+                    }
+
+                })
+            } else {
+                avail.innerText = 'Only enter alphanumeric characters, with no spaces.';
+            }
+        }
+
+
+    </script>
+
+
+
+
+
+
 </body>
 
 </html>
