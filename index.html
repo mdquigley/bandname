@@ -62,7 +62,7 @@
 
                 const signupURL = "https://bandcamp.com/signup?new_domain=";
 
-                const regex = /^[a-z0-9]+$/i;
+                const regex = /^[a-z0-9][a-z0-9-]+[a-z0-9]$/i;
 
                 function validateInput(text) {
                     return text.match(regex);
@@ -84,7 +84,7 @@
                         })
                     } else if (input.value !== "") {
                         name.innerText = '';
-                        avail.innerText = 'Only enter alphanumeric characters, with no spaces \n 🚫';
+                        avail.innerText = 'Band names must start and end with a letter or number, and can include dashes anywhere in the middle. \n 🚫';
                     } else {
                         name.innerText = '';
                         avail.innerText = '';
