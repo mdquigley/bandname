@@ -14,8 +14,12 @@ h1 span{
     padding-top: 65px;
 }
 
-#avail {
+#result {
     padding-top: 65px;;
+}
+
+#name {
+    color: #ab6868;
 }
 
 button {
