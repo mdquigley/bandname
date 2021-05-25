@@ -17,3 +17,15 @@ h1 span{
 #avail {
     padding-top: 65px;;
 }
+
+button {
+background-color: #ab6868;
+  border: none;
+  color: white;
+  padding: 10px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 8px;
+  cursor: pointer;
+}
