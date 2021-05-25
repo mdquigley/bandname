@@ -16,19 +16,20 @@ h1 span{
     margin-left: -10px;
 }
 
-#form {
+/* #form {
     padding-top: 65px;
 }
 
 #result {
     padding-top: 65px;;
+} */
+
+.container{
+    
+    padding: 65px 45px 0px 45px;
 }
 
-.container {
-    padding-top: 65px;
-}
-
-#name {
+#bname {
     color: #ab6868;
 }
 
@@ -52,7 +53,12 @@ button:hover {
     font-size: 2em;
 }
 
+.rules {
+    font-weight: normal;
+}
+
 footer {
+    padding: 0 0 0 0;
     font-size: 0.9em;
     position: absolute;
     bottom: 0;

@@ -1,6 +1,6 @@
 const submit = document.getElementById('submit');
 const input = document.getElementById('input');
-const name = document.getElementById('name');
+const bname = document.getElementById('bname');
 const avail = document.getElementById('avail');
 const warning = document.getElementById('warning');
 
@@ -23,19 +23,22 @@ submit.onclick = function lookUp() {
         const myRequest = new Request(url);
         fetch(myRequest).then(function (response) {
 
-            name.innerText = bandname;
+            bname.innerText = bandname;
             warning.innerText = (response.url.includes(signupURL) ? '🤘\n' : '😭\n');
             avail.innerText = '.bandcamp.com is ' + (response.url.includes(signupURL) ? 'available!' : 'not available');
+            avail.classList.remove("rules");
 
         })
     } else if (input.value !== "") {
-        name.innerText = '';
+        bname.innerText = '';
         warning.innerText = '⚠️\n';
         avail.innerText = 'Band names must start and end with a letter or number, and may include dashes anywhere in the middle.\n\ngood-example123 ✅\n-bad-example- ❌';
+        avail.classList.add("rules");
     } else {
-        name.innerText = '';
+        bname.innerText = '';
         warning.innerText = '';
         avail.innerText = '';
+        avail.classList.remove("rules");
     }
 }
 
