@@ -14,84 +14,97 @@
 </head>
 
 <body>
-
-    <h1 id="title">
-        <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
-            viewBox="0 -255 1143.000000 671.000000" preserveAspectRatio="xMidYMid meet">
-            <metadata>
-                Created by potrace 1.16, written by Peter Selinger 2001-2019
-            </metadata>
-            <g transform="translate(0.000000,671.000000) scale(0.100000,-0.100000)" fill="#ab6868" stroke="none">
-                <path d="M2 6677 c2 -22 643 -1215 1803 -3355 l1799 -3322 3899 0 3899 0 -24
+    <div id="page-container">
+        <div id="content">
+            <h1 id="title">
+                <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
+                    viewBox="0 -255 1143.000000 671.000000" preserveAspectRatio="xMidYMid meet">
+                    <metadata>
+                        Created by potrace 1.16, written by Peter Selinger 2001-2019
+                    </metadata>
+                    <g transform="translate(0.000000,671.000000) scale(0.100000,-0.100000)" fill="#ab6868"
+                        stroke="none">
+                        <path d="M2 6677 c2 -22 643 -1215 1803 -3355 l1799 -3322 3899 0 3899 0 -24
 43 c-13 23 -831 1533 -1818 3355 l-1794 3312 -3884 0 -3883 0 3 -33z" />
-            </g>
-        </svg>
+                    </g>
+                </svg>
 
-        <span>bandname</span>
-    </h1>
-    <p id="description">Check to see if your ideal Bandcamp URL is available before settling on that sick new band name.
-    </p>
-    <div id="form">
-        <label for="input">Enter band name: </label><input id="input" name="input" type="text" required
-            placeholder="bandnamewithnospaces">
-        <button id="submit">Look Up</button>
+                <span>bandname</span>
+            </h1>
+
+            <p id="description" class="container">Check to see if your ideal Bandcamp URL is available before settling
+                on
+                that
+                sick new band name.
+            </p>
+
+            <div id="form" class="container">
+                <label for="input">Enter band name: </label><input id="input" name="input" type="text" required
+                    placeholder="bandnamewithnospaces">
+                <button id="submit">Look Up</button>
+            </div>
+
+            <h3 id="result" class="container"><span id="name"></span><span id="avail"></span></h3>
+
+            <footer class="container">
+                <p>site by <a href="https://quig.info">quigley</a> | <a
+                        href="https://github.com/mdquigley/bandname">source</a>
+                </p>
+            </footer>
+
+            <script>
+
+                const submit = document.getElementById('submit');
+                const input = document.getElementById('input');
+                const name = document.getElementById('name');
+                const avail = document.getElementById('avail');
+
+
+                const signupURL = "https://bandcamp.com/signup?new_domain=";
+
+                const regex = /^[a-z0-9]+$/i;
+
+                function validateInput(text) {
+                    return text.match(regex);
+                }
+
+                submit.onclick = function lookUp() {
+
+                    if (validateInput(input.value)) {
+
+                        const bandname = input.value;
+                        const url = 'https://' + bandname + '.bandcamp.com';
+
+                        const myRequest = new Request(url);
+                        fetch(myRequest).then(function (response) {
+
+                            name.innerText = bandname;
+                            avail.innerText = '.bandcamp.com is ' + (response.url.includes(signupURL) ? 'available! \n🤘' : 'not available \n😭');
+
+                        })
+                    } else if (input.value !== "") {
+                        name.innerText = '';
+                        avail.innerText = 'Only enter alphanumeric characters, with no spaces \n 🚫';
+                    } else {
+                        name.innerText = '';
+                        avail.innerText = '';
+                    }
+                }
+
+                input.addEventListener('keyup', function (event) {
+                    if (event.keyCode === 13) {
+                        submit.click();
+                    }
+                });
+
+
+            </script>
+
+
+
+
+        </div>
     </div>
-
-    <h3 id="result"><span id="name"></span><span id="avail"></span></h3>
-
-    <script>
-
-        const submit = document.getElementById('submit');
-        const input = document.getElementById('input');
-        const name = document.getElementById('name');
-        const avail = document.getElementById('avail');
-
-
-        const signupURL = "https://bandcamp.com/signup?new_domain=";
-
-        const regex = /^[a-z0-9]+$/i;
-
-        function validateInput(text) {
-            return text.match(regex);
-        }
-
-        submit.onclick = function lookUp() {
-
-            if (validateInput(input.value)) {
-
-                const bandname = input.value;
-                const url = 'https://' + bandname + '.bandcamp.com';
-
-                const myRequest = new Request(url);
-                fetch(myRequest).then(function (response) {
-
-                    name.innerText = bandname;
-                    avail.innerText = '.bandcamp.com is ' + (response.url.includes(signupURL) ? 'available! \n🤘' : 'not available \n😭');
-
-                })
-            } else if (input.value !== "") {
-                name.innerText = '';
-                avail.innerText = 'Only enter alphanumeric characters, with no spaces \n 🚫';
-            } else {
-                name.innerText = '';
-                avail.innerText = '';
-            }
-        }
-
-        input.addEventListener('keyup', function (event) {
-            if (event.keyCode === 13) {
-                submit.click();
-            }
-        });
-
-
-    </script>
-
-
-
-
-
-
 </body>
 
 </html>
