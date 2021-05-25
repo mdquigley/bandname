@@ -70,9 +70,11 @@
 
                 })
             } else if (input.value !== "") {
-                result.innerText = 'Only enter alphanumeric characters, with no spaces.';
+                name.innerText = '';
+                avail.innerText = 'Only enter alphanumeric characters, with no spaces \n 🚫';
             } else {
-                result.innerText = '';
+                name.innerText = '';
+                avail.innerText = '';
             }
         }
 
