@@ -44,7 +44,8 @@
                 <button id="submit">Look Up</button>
             </div>
 
-            <h3 id="result" class="container"><span id="name"></span><span id="avail"></span></h3>
+            <h3 id="result" class="container"><span id="warning"></span><span id="name"></span><span id="avail"></span>
+            </h3>
 
             <footer class="container">
                 <p>site by <a href="https://quig.info">quigley</a> | <a
@@ -58,6 +59,7 @@
                 const input = document.getElementById('input');
                 const name = document.getElementById('name');
                 const avail = document.getElementById('avail');
+                const warning = document.getElementById('warning');
 
 
                 const signupURL = "https://bandcamp.com/signup?new_domain=";
@@ -79,14 +81,17 @@
                         fetch(myRequest).then(function (response) {
 
                             name.innerText = bandname;
-                            avail.innerText = '.bandcamp.com is ' + (response.url.includes(signupURL) ? 'available! \n🤘' : 'not available \n😭');
+                            warning.innerText = (response.url.includes(signupURL) ? '🤘\n' : '😭\n');
+                            avail.innerText = '.bandcamp.com is ' + (response.url.includes(signupURL) ? 'available!' : 'not available');
 
                         })
                     } else if (input.value !== "") {
                         name.innerText = '';
-                        avail.innerText = 'Band names must start and end with a letter or number, and can include dashes anywhere in the middle. \n 🚫';
+                        warning.innerText = '⚠️\n';
+                        avail.innerText = 'Band names must start and end with a letter or number, and may include dashes anywhere in the middle.\n\ngood-example123 ✅\n-bad-example- ❌';
                     } else {
                         name.innerText = '';
+                        warning.innerText = '';
                         avail.innerText = '';
                     }
                 }
