@@ -1,4 +1,5 @@
 # Bandname
-## (Work in progess)
 
-Check to see if your ideal Bandcamp URL is available before settling on that sick new band name.
+A very simple site that checks if a [Bandcamp](https://bandcamp.com) subdomain is available.
+
+<img src="img/demo.gif" width="75%" height="75%">
