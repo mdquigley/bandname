@@ -13,7 +13,7 @@ function validateInput(text) {
     return text.match(regex);
 }
 
-submit.onclick = function lookUp() {
+submit.addEventListener('click', function () {
 
     if (validateInput(input.value)) {
 
@@ -40,7 +40,7 @@ submit.onclick = function lookUp() {
         avail.innerText = '';
         avail.classList.remove("rules");
     }
-}
+});
 
 input.addEventListener('keyup', function (event) {
     if (event.keyCode === 13) {
