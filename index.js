@@ -36,7 +36,7 @@ submit.addEventListener('click', async function () {
             // avail.classList.remove("rules");
 
         }).catch(e => {
-            avail.innerText('There has been a problem with your fetch operation: ' + e.message);
+            avail.innerText = ('There has been a problem with your fetch operation: ' + e.message);
         });
     } else if (input.value !== "") {
         clearResults();
