@@ -28,7 +28,9 @@ submit.addEventListener('click', async function () {
             avail.innerText = '.bandcamp.com is ' + (response.url.includes(signupURL) ? 'available!' : 'not available');
             avail.classList.remove("rules");
 
-        })
+        }).catch(e => {
+            avail.innerText('There has been a problem with your fetch operation: ' + e.message);
+        });
     } else if (input.value !== "") {
         bname.innerText = '';
         warning.innerText = '⚠️\n';
