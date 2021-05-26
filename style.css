@@ -1,7 +1,7 @@
 #page-container {
     position: relative;
     min-height: 100vh;
-    background-color:white;
+    /* background-color:white; */
     font-family: sans-serif;
     display: flex;
     flex-direction: column;
@@ -18,7 +18,7 @@ h1 span{
 
 .container{
     
-    padding: 65px 45px 0px 45px;
+    padding: 65px 100px 0px 100px;
 }
 
 #bname {
@@ -48,6 +48,11 @@ button:hover {
 
 .rules {
     font-weight: normal;
+    /* font-size: 16px; */
+}
+
+#result {
+    padding-bottom: 65px;
 }
 
 footer {

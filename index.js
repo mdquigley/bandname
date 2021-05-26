@@ -20,6 +20,11 @@ submit.addEventListener('click', async function () {
         const bandname = input.value.toLowerCase();
         const url = 'https://' + bandname + '.bandcamp.com';
 
+        bname.innerText = '';
+        warning.innerText = '';
+        avail.innerText = '';
+        bname.innerText = 'Searching for ' + bandname + ' . . .';
+
         const myRequest = new Request(url);
         await fetch(myRequest).then(function (response) {
 
@@ -34,7 +39,7 @@ submit.addEventListener('click', async function () {
     } else if (input.value !== "") {
         bname.innerText = '';
         warning.innerText = '⚠️\n';
-        avail.innerText = 'Band names must start and end with a letter or number, and may include dashes anywhere in the middle.\n\ngood-example123 ✅\n-bad-example- ❌';
+        avail.innerText = 'Oops: Band names must start and end with a letter or number, and may include dashes anywhere in the middle.\n\ngood-example123 ✅\n-bad-example- ❌';
         avail.classList.add("rules");
     } else {
         bname.innerText = '';
