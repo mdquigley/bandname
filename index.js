@@ -13,7 +13,7 @@ function validateInput(text) {
     return text.match(regex);
 }
 
-submit.addEventListener('click', function () {
+submit.addEventListener('click', async function () {
 
     if (validateInput(input.value)) {
 
@@ -21,7 +21,7 @@ submit.addEventListener('click', function () {
         const url = 'https://' + bandname + '.bandcamp.com';
 
         const myRequest = new Request(url);
-        fetch(myRequest).then(function (response) {
+        await fetch(myRequest).then(function (response) {
 
             bname.innerText = bandname;
             warning.innerText = (response.url.includes(signupURL) ? '🤘\n' : '😭\n');
