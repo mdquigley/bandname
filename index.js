@@ -20,31 +20,31 @@ submit.addEventListener('click', async function () {
         const bandname = input.value.toLowerCase();
         const url = 'https://' + bandname + '.bandcamp.com';
 
-        bname.innerText = '';
-        warning.innerText = '';
-        avail.innerText = '';
+        clearResults();
         bname.innerText = 'Searching for ' + bandname + ' . . .';
 
         const myRequest = new Request(url);
         await fetch(myRequest).then(function (response) {
 
-            bname.innerText = bandname;
-            warning.innerText = (response.url.includes(signupURL) ? '🤘\n' : '😭\n');
-            avail.innerText = '.bandcamp.com is ' + (response.url.includes(signupURL) ? 'available!' : 'not available');
-            avail.classList.remove("rules");
+            clearResults();
+            console.log(response);
+            warning.innerText = response.statusText + " " + response.status;
+
+            // bname.innerText = bandname;
+            // warning.innerText = (response.url.includes(signupURL) ? '🤘\n' : '😭\n');
+            // avail.innerText = '.bandcamp.com is ' + (response.url.includes(signupURL) ? 'available!' : 'not available');
+            // avail.classList.remove("rules");
 
         }).catch(e => {
             avail.innerText('There has been a problem with your fetch operation: ' + e.message);
         });
     } else if (input.value !== "") {
-        bname.innerText = '';
+        clearResults();
         warning.innerText = '⚠️\n';
         avail.innerText = 'Oops: Band names must start and end with a letter or number, and may include dashes anywhere in the middle.\n\ngood-example123 ✅\n-bad-example- ❌';
         avail.classList.add("rules");
     } else {
-        bname.innerText = '';
-        warning.innerText = '';
-        avail.innerText = '';
+        clearResults();
         avail.classList.remove("rules");
     }
 });
@@ -54,3 +54,9 @@ input.addEventListener('keyup', function (event) {
         submit.click();
     }
 });
+
+function clearResults() {
+    bname.innerText = '';
+    warning.innerText = '';
+    avail.innerText = '';
+}
