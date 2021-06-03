@@ -49,7 +49,7 @@ submit.addEventListener('click', async function () {
     } else if (input.value !== "") {
         clearResults();
         warning.innerText = '⚠️\n';
-        avail.innerText = 'Band names can include letters, numbers, and dashes.\nThey cannot begin or end with a dash.\n\ngood-example123 ✅\n-bad-example- ❌';
+        avail.innerText = 'Band names can include letters, numbers, and dashes.\nThey cannot begin or end with a dash.\n\n✅ good-example123\n❌ -bad-example-';
         avail.classList.add("rules");
     } else {
         clearResults();
