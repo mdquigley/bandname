@@ -4,7 +4,7 @@ const bname = document.getElementById('bname');
 const avail = document.getElementById('avail');
 const warning = document.getElementById('warning');
 
-const signupURL = "https://bandcamp.com/signup?new_domain=";
+const signup = "Signup | Bandcamp";
 
 const regex = /^[a-z0-9][a-z0-9-]+[a-z0-9]$/i;
 
@@ -17,25 +17,35 @@ submit.addEventListener('click', async function () {
     if (validateInput(input.value)) {
 
         const bandname = input.value.toLowerCase();
+
         const url = 'https://bandname-proxy.herokuapp.com/https://' + bandname + '.bandcamp.com';
 
         clearResults();
         bname.innerHTML = '<div class="lds-ring"><div></div><div></div><div></div><div></div></div>';
 
         const myRequest = new Request(url);
-        await fetch(myRequest).then(function (response) {
+        let response;
 
-            clearResults();
-            bname.innerText = bandname;
-            warning.innerText = (response.url.includes(signupURL) ? '🤘\n' : '😭\n');
-            avail.innerText = '.bandcamp.com is ' + (response.url.includes(signupURL) ? 'available!' : 'not available');
-            avail.classList.remove("rules");
-
-        }).catch(e => {
-            clearResults();
-            console.log(e)
-            avail.innerText = ('There has been a problem with your fetch operation: ' + e.message);
+        $.ajax({
+            url: url,
+            success: function (data) {
+                response = $.parseHTML(data.responseText)[1].innerText;
+                console.log(response);
+                clearResults();
+                bname.innerText = bandname;
+                warning.innerText = (response.includes(signup) ? '🤘\n' : '😭\n');
+                avail.innerText = '.bandcamp.com is ' + (response.includes(signup) ? 'available!' : 'not available');
+                avail.classList.remove("rules");
+            },
+            error: function (data) {
+                clearResults();
+                console.log(data)
+                avail.innerText = ('There has been a problem with your fetch operation: ' + data.responseText);
+            }
         });
+
+
+
     } else if (input.value !== "") {
         clearResults();
         warning.innerText = '⚠️\n';
@@ -46,6 +56,30 @@ submit.addEventListener('click', async function () {
         avail.classList.remove("rules");
     }
 });
+
+// await fetch(myRequest).then(function (response) {
+
+//     clearResults();
+//     bname.innerText = bandname;
+//     warning.innerText = (response.url.includes(signupURL) ? '🤘\n' : '😭\n');
+//     avail.innerText = '.bandcamp.com is ' + (response.url.includes(signupURL) ? 'available!' : 'not available');
+//     avail.classList.remove("rules");
+
+// }).catch(e => {
+//     clearResults();
+//     console.log(e)
+//     avail.innerText = ('There has been a problem with your fetch operation: ' + e.message);
+// });
+//     } else if (input.value !== "") {
+//     clearResults();
+//     warning.innerText = '⚠️\n';
+//     avail.innerText = 'Oops: Band names must start and end with a letter or number, and may include dashes anywhere in the middle.\n\ngood-example123 ✅\n-bad-example- ❌';
+//     avail.classList.add("rules");
+// } else {
+//     clearResults();
+//     avail.classList.remove("rules");
+// }
+// });
 
 input.addEventListener('keyup', function (event) {
     if (event.keyCode === 13) {
