@@ -18,7 +18,7 @@ submit.addEventListener('click', async function () {
     if (validateInput(input.value)) {
 
         const bandname = input.value.toLowerCase();
-        const url = 'https://' + bandname + '.bandcamp.com';
+        const url = 'https://bandname-proxy.herokuapp.com/https://' + bandname + '.bandcamp.com';
 
         clearResults();
         bname.innerText = 'Searching for ' + bandname + ' . . .';
