@@ -39,10 +39,12 @@ submit.addEventListener('click', async function () {
                 avail.classList.remove("rules");
 
                 if (response.includes(signup)) {
-                    claim.classList.add('claim');
+                    // claim.classList.add('claim');
+                    claim.setAttribute('style', "display: block");
                     claim.setAttribute('href', "https://bandcamp.com/signup?new_domain=" + bandname);
                 } else {
-                    claim.classList.remove("claim");
+                    // claim.classList.remove("claim");
+                    claim.setAttribute('style', "display: none");
                     claim.setAttribute('href', "#");
                 }
 
