@@ -62,7 +62,7 @@ submit.addEventListener('click', async function () {
     } else {
         clearResults();
         avail.classList.remove("rules");
-        avail.classList.remove("claim");
+        claim.classList.remove("claim");
         claim.setAttribute('href', "#");
     }
 });
