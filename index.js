@@ -4,7 +4,6 @@ const bname = document.getElementById('bname');
 const avail = document.getElementById('avail');
 const warning = document.getElementById('warning');
 
-
 const signupURL = "https://bandcamp.com/signup?new_domain=";
 
 const regex = /^[a-z0-9][a-z0-9-]+[a-z0-9]$/i;
@@ -21,21 +20,20 @@ submit.addEventListener('click', async function () {
         const url = 'https://bandname-proxy.herokuapp.com/https://' + bandname + '.bandcamp.com';
 
         clearResults();
-        bname.innerText = 'Searching for ' + bandname + ' . . .';
+        bname.innerHTML = '<div class="lds-ring"><div></div><div></div><div></div><div></div></div>';
 
         const myRequest = new Request(url);
         await fetch(myRequest).then(function (response) {
 
             clearResults();
-            console.log(response);
-            warning.innerText = response.statusText + " " + response.status;
-
-            // bname.innerText = bandname;
-            // warning.innerText = (response.url.includes(signupURL) ? '🤘\n' : '😭\n');
-            // avail.innerText = '.bandcamp.com is ' + (response.url.includes(signupURL) ? 'available!' : 'not available');
-            // avail.classList.remove("rules");
+            bname.innerText = bandname;
+            warning.innerText = (response.url.includes(signupURL) ? '🤘\n' : '😭\n');
+            avail.innerText = '.bandcamp.com is ' + (response.url.includes(signupURL) ? 'available!' : 'not available');
+            avail.classList.remove("rules");
 
         }).catch(e => {
+            clearResults();
+            console.log(e)
             avail.innerText = ('There has been a problem with your fetch operation: ' + e.message);
         });
     } else if (input.value !== "") {
