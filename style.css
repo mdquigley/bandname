@@ -59,6 +59,10 @@ button:hover {
     padding-bottom: 65px;
 }
 
+.hidden {
+  display: none;
+}
+
 .claim {
   display: block;
 }
