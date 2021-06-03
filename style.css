@@ -112,9 +112,16 @@ footer a:hover {
 
   @media only screen and (max-device-width: 480px) {
     .container{
-    
       padding: 40px 50px 0px 50px;
-  }
+    }
+
+    #input {
+      font-size: 20px;
+      margin-top: 5px;
+      margin-bottom: 10px;
+    }
+
+
     
   }
   
