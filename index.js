@@ -28,7 +28,7 @@ submit.addEventListener('click', async function () {
 
         $.ajax({
             url: url,
-            success: function (data) {
+            complete: function (data) {
                 response = $.parseHTML(data.responseText)[1].innerText;
                 console.log(response);
                 clearResults();
