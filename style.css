@@ -59,7 +59,7 @@ button:hover {
     padding-bottom: 65px;
 }
 
-#claim {
+.claim {
   display: block !important;
 }
 
