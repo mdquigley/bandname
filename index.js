@@ -42,11 +42,12 @@ submit.addEventListener('click', async function () {
                     claim.classList.remove('hidden');
                     claim.classList.add('claim');
                     claim.setAttribute('href', "https://bandcamp.com/signup?new_domain=" + bandname);
-                } else {
-                    claim.classList.remove("claim");
-                    claim.classList.add('hidden');
-                    claim.setAttribute('href', "#");
                 }
+                // else {
+                //     claim.classList.remove("claim");
+                //     claim.classList.add('hidden');
+                //     claim.setAttribute('href', "#");
+                // }
 
 
             },
