@@ -26,9 +26,6 @@ submit.addEventListener('click', async function () {
         await fetch(myRequest).then(function (response) {
 
             clearResults();
-            // ßconsole.log(response);
-            // warning.innerText = response.statusText + " " + response.status;
-
             bname.innerText = bandname;
             warning.innerText = (response.url.includes(signupURL) ? '🤘\n' : '😭\n');
             avail.innerText = '.bandcamp.com is ' + (response.url.includes(signupURL) ? 'available!' : 'not available');
