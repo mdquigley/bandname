@@ -38,7 +38,7 @@ submit.addEventListener('click', async function () {
                 avail.innerText = '.bandcamp.com is ' + (response.includes(signup) ? 'available!' : 'not available');
                 avail.classList.remove("rules");
 
-                if (response.includes(singup)) {
+                if (response.includes(signup)) {
                     claim.classList.add('claim');
                     claim.setAttribute('href', "https://bandcamp.com/signup?new_domain=" + bandname);
                 }
