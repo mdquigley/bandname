@@ -2,6 +2,7 @@
     position: relative;
     min-height: 100vh;
     font-family: sans-serif;
+    font-weight: 100;
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -46,8 +47,8 @@ button:hover {
 }
 
 .rules {
-    font-weight: normal;
-    /* font-size: 16px; */
+    font-weight: 100;
+    font-size: 16px;
 }
 
 #result {
