@@ -3,6 +3,7 @@ const input = document.getElementById('input');
 const bname = document.getElementById('bname');
 const avail = document.getElementById('avail');
 const warning = document.getElementById('warning');
+const claim = document.getElementById('claim');
 
 const signup = "Signup | Bandcamp";
 
@@ -36,6 +37,13 @@ submit.addEventListener('click', async function () {
                 warning.innerText = (response.includes(signup) ? '🤘\n' : '😭\n');
                 avail.innerText = '.bandcamp.com is ' + (response.includes(signup) ? 'available!' : 'not available');
                 avail.classList.remove("rules");
+
+                if (response.includes(singup)) {
+                    claim.classList.add('claim');
+                    claim.setAttribute('href', "https://bandcamp.com/signup?new_domain=" + bandname);
+                }
+
+
             },
             error: function (data) {
                 clearResults();
@@ -54,6 +62,8 @@ submit.addEventListener('click', async function () {
     } else {
         clearResults();
         avail.classList.remove("rules");
+        avail.classList.remove("claim");
+        claim.setAttribute('href', "#");
     }
 });
 
