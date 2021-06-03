@@ -62,8 +62,6 @@ submit.addEventListener('click', async function () {
     } else {
         clearResults();
         avail.classList.remove("rules");
-        claim.classList.remove("claim");
-        claim.setAttribute('href', "#");
     }
 });
 
@@ -77,4 +75,6 @@ function clearResults() {
     bname.innerText = '';
     warning.innerText = '';
     avail.innerText = '';
+    claim.classList.remove("claim");
+    claim.setAttribute('href', "#");
 }
