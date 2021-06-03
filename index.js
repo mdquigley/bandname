@@ -49,37 +49,13 @@ submit.addEventListener('click', async function () {
     } else if (input.value !== "") {
         clearResults();
         warning.innerText = '⚠️\n';
-        avail.innerText = 'Oops: Band names must start and end with a letter or number, and may include dashes anywhere in the middle.\n\ngood-example123 ✅\n-bad-example- ❌';
+        avail.innerText = 'Band names can include letters, numbers, and dashes.\nThey cannot begin or end with a dash.\n\ngood-example123 ✅\n-bad-example- ❌';
         avail.classList.add("rules");
     } else {
         clearResults();
         avail.classList.remove("rules");
     }
 });
-
-// await fetch(myRequest).then(function (response) {
-
-//     clearResults();
-//     bname.innerText = bandname;
-//     warning.innerText = (response.url.includes(signupURL) ? '🤘\n' : '😭\n');
-//     avail.innerText = '.bandcamp.com is ' + (response.url.includes(signupURL) ? 'available!' : 'not available');
-//     avail.classList.remove("rules");
-
-// }).catch(e => {
-//     clearResults();
-//     console.log(e)
-//     avail.innerText = ('There has been a problem with your fetch operation: ' + e.message);
-// });
-//     } else if (input.value !== "") {
-//     clearResults();
-//     warning.innerText = '⚠️\n';
-//     avail.innerText = 'Oops: Band names must start and end with a letter or number, and may include dashes anywhere in the middle.\n\ngood-example123 ✅\n-bad-example- ❌';
-//     avail.classList.add("rules");
-// } else {
-//     clearResults();
-//     avail.classList.remove("rules");
-// }
-// });
 
 input.addEventListener('keyup', function (event) {
     if (event.keyCode === 13) {
