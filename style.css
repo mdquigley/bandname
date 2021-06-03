@@ -60,7 +60,7 @@ button:hover {
 }
 
 #claim {
-  display: block;
+  display: block !important;
 }
 
 footer {
