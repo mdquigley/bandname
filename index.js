@@ -41,6 +41,9 @@ submit.addEventListener('click', async function () {
                 if (response.includes(signup)) {
                     claim.classList.add('claim');
                     claim.setAttribute('href', "https://bandcamp.com/signup?new_domain=" + bandname);
+                } else {
+                    claim.classList.remove("claim");
+                    claim.setAttribute('href', "#");
                 }
 
 
